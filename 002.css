@@ -1,0 +1,164 @@
+/************************start reset**************************/
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td, 
+/*html 5 elements*/
+article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup,menu, nav, output, ruby, section, summary,time, mark, audio, video,command, datalist, keygen, mark, meter, progress, rp, rt, wbr{
+margin: 0;padding: 0;border: 0;outline: 0;font-weight: inherit;font-style: inherit;font-size: 100%;font-family: inherit;
+/*	vertical-align: baseline;*/}
+/* html5 elements for older browsers*/
+article, aside, canvas, details, embed, figcaption, figure, footer, header, hgroup, menu, nav, section, summary{display:block;}
+command, datalist, keygen, mark, meter, progress, rp, rt, ruby, time, wbr {display:inline;}
+/* using height:100% on html and body allows to style containers with a 100% height
+ * the overflow declaration is to make sure there is a gutter for the scollbar in all browsers regardless of content
+ * note that there is no font-size declaration set in this rule. If you wish to include one, you should use font-size: 100.01% to prevent bugs in IE and Opera
+ */
+html {height: 100%; /*overflow-y: scroll;*/ font-size:100.01%;}
+/* not all browsers set white as the default background color
+ * color is set to create not too much contrast with the background color
+ * line-height is to ensure that text is legible enough (that there is enough space between the upper and lower line)
+ */
+body {height:100%; line-height:1.4; color:#1a1a1a;background:white;}
+/*** start typography ***/
+/* this choice of font-family is supposed to render text the same across platforms
+ * letter-spacing makes the font a bit more legible
+ */
+body, input, button, textarea, select {font-family: "Lucida Sans Unicode","Lucida Grande","Lucida Sans",Verdana,Arial, sans-serif; /*letter-spacing:1px;*/}
+h1, h2, h3, h4, h5, h6 {font-family: Georgia, "DejaVu Serif", serif; letter-spacing: 1px;}
+pre, tt, code, kbd, samp, var {font-family: "Courier New", Courier, monospace;}
+/* avoid browser default inconsistent heading font-sizes - and pre/code/kbd too */
+H1, H2, H3, H4, H5, H6, PRE, CODE, KBD {font-size:1em; }
+H1, H2, H3, H4, H5, H6{font-weight:700;}
+/*ensure font-weight heritage for headings with links inside also on IE8*/
+H1 A, H2 A, H3 A,H4 A, H5 A, H6 A { font-weight: inherit;}
+H1 {font-size: 2.625em;}/*golden 16 main 42 title*/
+H2 {font-size: 1.625em;}/*golden 16 main 26 headline*/
+H3 {font-size: 1.25em;}/*golden 16 main sub-headline*/
+H4 {font-size: 1.2em;}
+H5 {font-size: 1.1em;}
+H6 {font-size: 1em;}
+/*SUP and SUB fix to maintain line-height*/SUP, SUB {height: 0;line-height: 1;vertical-align: baseline;_vertical-align: bottom;position: relative;font-size:smaller;}SUP {bottom: 1ex;}SUB {top: .5ex;}
+TH, DT, B, STRONG{font-weight:700;}
+EM {font-style:italic;}
+/* This should be self explanatory */blockquote, q, em, cite, dfn, i, cite, var {font-style: italic;}
+/* to prevent some browsers from inserting quotes on "q" and "p" ("p" in blockquotes)*/blockquote p:before, blockquote p:after, q:before, q:after {content: '';}blockquote, q {quotes: "" "";}
+/* link underlines tend to make hypertext less readable, because underlines obscure the shapes of the lower halves of words */:link,:visited,INS {text-decoration:none;}
+/*** end typography ***/
+/* de-italicize address,abbr */address,abbr {font-style:normal;}
+/*** start TABLEs ***/
+/* tables still need 'cellspacing="0"' and 'cellpadding="0"' in the markup */table {border-collapse: separate;border-spacing: 0;}
+/* all th should be centered unless they are in tbody (table body) */
+th {text-align: center;}tbody th {text-align: left;}caption, td {text-align: left;font-weight: normal;}
+/* caption and summary are very important for tabular data but because caption is nearly impossible to style across browsers many authors do not use it or use display:none to "hide" it (which is almost the same as not using it).
+ * so to prevent such workaround, I am positioning this element off-screen
+ */caption{position: absolute;left: -999em;}
+/*** end TABLEs ***/
+/*** start rules to make LISTs consistant across all browsers ***/
+/* give lists consistant style - IE uses margin-left FF uses padding-left */
+OL, UL{margin:0px;padding:0px;line-height:1.5em;}
+OL{list-style:decimal;}
+OL OL{list-style:lower-alpha;}
+OL OL OL{list-style:upper-roman;}
+UL{list-style:disc;}
+UL UL{list-style:circle;}
+UL UL UL{list-style:square;}
+DL, OL, UL {margin-top:.25em;margin-left: 3em; padding-left: 0em; list-style-position:outside;}
+/* nested lists get reduced margins and paddings */
+UL UL , OL OL, OL UL, UL OL {margin-left: 1em;list-style-position:outside;}
+OL OL UL, UL OL UL, OL OL OL {margin-left: 1em;list-style-position:outside;}
+LI{margin:0 1em .5em 0;padding:0;text-indent:0em;}
+DT{/*float:left;clear:left;*/font-weight:bold; margin-right:.5em;}
+DD{margin-left:0;padding-left:0;-webkit-margin-start:0px;font-weight:normal;margin-bottom:.5em;}
+LI>UL, LI>OL{margin-top:.25em;/*margin-bottom:-.5em;*/padding-bottom:-.25em;}
+/* if we want to override default list style types do it with a class... */
+UL.circle {list-style-type:circle;}
+UL.square {list-style-type:square;}
+UL.disc{list-style-type:disc;}/*The marker is a filled circle. This is default*/
+OL.armenian{list-style-type:armenian;}/*The marker is traditional Armenian numbering*/
+OL.decimal{list-style-type:decimal;}/*The marker is a number*/
+OL.decimal-leading-zero{list-style-type:decimal-leading-zero;}/*The marker is a number padded by initial zeros (01, 02, 03, etc.)*/
+OL.georgian{list-style-type:georgian;}/*The marker is traditional Georgian numbering (an, ban, gan, etc.)*/
+OL.lower-alpha{list-style-type:lower-alpha;}/*The marker is lower-alpha (a, b, c, d, e, etc.)*/
+OL.lower-greek{list-style-type:lower-greek;}/*The marker is lower-greek (alpha, beta, gamma, etc.)*/
+OL.lower-latin{list-style-type:lower-latin;}/*The marker is lower-latin (a, b, c, d, e, etc.)*/
+OL.lower-roman{list-style-type:lower-roman;}/*The marker is lower-roman (i, ii, iii, iv, v, etc.)*/
+OL.upper-alpha{list-style-type:upper-alpha;}/*The marker is upper-alpha (A, B, C, D, E, etc.)*/
+OL.upper-latin{list-style-type:upper-latin;}/*The marker is upper-latin (A, B, C, D, E, etc.)*/
+OL.upper-roman{list-style-type:upper-roman;}/*The marker is upper-roman (I, II, III, IV, V, etc.)*/
+UL.none{list-style-type:none;}
+/*** end rules to make LISTs consistent across all browsers ***/
+/*** start FORM elements ***/
+/* get rid of ugly box border in IE*/
+INPUT[type="radio"]{margin:0px;padding:0px;border:0px;background-color:transparent;}
+/* align checkboxes, radios, text inputs with their label */
+INPUT[type="radio"] { vertical-align: text-bottom; }
+INPUT[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
+.ie6 INPUT{ vertical-align: text-bottom; }
+/* hand cursor on clickable input elements */
+label, input[type=button], input[type=submit], button { cursor: pointer;}
+input[type=button], input[type=submit], button{white-space:nowrap;}/*buttons with multiple lines look dumb and usually wrong*/
+/*** end FORM elements ***/
+/*** start links ***/
+/* remember to define focus styles! */:focus {outline: 0;}
+/* who thought blue linked image borders were a good idea? */a img,:link img,:visited img, a object,:link object,:visited object{ border:0; }
+/*some long-arse links refused to break nicely, this fixes*/A{word-wrap:break-word;}
+/* to prevent a gap from showing below images in some browsers */img {vertical-align: bottom;}
+/* styling for links and visited links as well as for links in a hovered, focus and active state
+ * make sure to keep these rules in that order, with :active being last
+ * text-decoration: none is to make the links more legible while they are in a hovered, focus or active state
+ * link underlines tend to make hypertext less readable, because underlines obscure the shapes of the lower halves of words
+ * a:focus and :focus are used to help keyboard users, you may change their styling, but make sure to give users a visual clue of the element's state.
+ * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
+ * note that these last rules do not do anything in IE as this browser does not support "outline"
+ */
+a:link {color: #0000FF;text-decoration:none;}
+a:visited {color: #800080;text-decoration: none;}
+a:hover {text-decoration: underline;}
+a:focus {text-decoration: none;}
+a:focus/*,:focus*/ {outline: 1px dotted yellow;}
+a:hover,a:active {outline: none;}
+a:active{color: #FF0000;}
+/*** end links ***/
+IFRAME{width:100%;}
+/************************end reset**************************/
+#content{background:#CCC;}
+.onecol{margin:0 auto;padding:.0125em 1em 1em;width:800px;background:#FAFAFA;}
+P{margin:.75em 0;}
+
+/*** START LS color differentiation - require support at the HITE backend ***/
+/***
+* LEARNING STRATEGY COLORS based on intended difficulty level
+* app = easiest, no color (grey)
+* inc = still easy = green
+* ind = a little harder = blue
+* ded = hard = magenta
+* dis = hardest = red
+vs2013.12.05
+* updated google material color logic:
+* app = easiest = yellow/green #CDDC39
+* inc = still easy = lime green #4CAF50
+* ind = medium = blue #2196F3
+* ded = hard = purple #9C27B0
+* dis = hardest = red #F44336
+http://www.cssmatic.com/gradient-generator
+vs2015.11.17
+***/
+.vs_cont H2{border-bottom: 2px solid #CDDC39;/*yellow/green*/
+border-bottom-color: hsla(66,70%,54%,0.5);/*yellow/green*/}
+.one .vs_cont H2{border-bottom-color: #4CAF50;/*green*/
+border-bottom-color: hsla(122,39%,49%,0.5);/*green*/}
+.two .vs_cont H2{border-bottom-color: #2196F3;/*blue*/
+border-bottom-color: hsla(207,90%,54%,0.5);/*blue*/}
+.three .vs_cont H2{border-bottom-color: #9C27B0;/*purple*/
+border-bottom-color: hsla(291,64%,42%,0.5);/*purple*/}
+.four .vs_cont H2{border-bottom-color: #F44336;/*red*/
+border-bottom-color: hsla(4,90%,58%,0.5);/*red*/}
+/*** END LS color differentiation ***/
+
+/******** start mobile devices ********/
+@media all and (orientation:portrait) {
+/* Style adjustments for portrait mode goes here */
+}
+
+@media all and (orientation:landscape) {
+/* Style adjustments for landscape mode goes here */
+}
+/******** end mobile devices ********/
